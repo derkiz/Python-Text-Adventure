@@ -5,11 +5,15 @@ location = ''
 
 # Gameplay
 
-command = input('> ')
-if command.lower() != 'quit':
+# command = input('> ')
+# if command.lower() != 'quit':
 
+while True:
     # Spawn
-    location = 'one'
+    area = 'one'
+
+    # Prompt
+    command = input('> ')
 
     # Inspect Area
     if command.lower() == 'inspect area':
@@ -34,12 +38,14 @@ if command.lower() != 'quit':
             print(f'{n}: person {n}')
 
         goto = input('> ')
-        print(goto)
-        if int(goto) in range(1, (len(gen_list)+1)):
-            print(f'You go to person {goto}.')
-            print(gen_list[int(goto)])
+        int_goto = int(goto)
+        if (int_goto - 1) in range(0, (len(gen_list))):
+            print(f'You go to person {str(int_goto)}.')
+            print(gen_list[int_goto - 1])
 
     # Inspect Animals
 
-else:
-    print('quit')
+    # Quit
+    if command.lower() == 'quit':
+        print('You disconnect your player. You died.')
+        break

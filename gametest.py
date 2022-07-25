@@ -11,7 +11,7 @@ while True:
     area = 1
 
     # Target
-    target = 0
+    target = 1
 
     # Prompt
     command = input('> ')
@@ -59,6 +59,11 @@ while True:
             target = (gen_list[int_goto - 1])
 
     # Attack
+    if command.lower() == 'attack target':
+        if target == 0:
+            print('You can not attack nothing.')
+        else:
+            print(f'target: {target}')
 
     # Say
     if (command.lower()[:5]) == '/say ':
@@ -75,6 +80,7 @@ while True:
         pass
 
     elif command.lower() not in commandlist:
+        # Variety in error message
         not_reco_random = random.randint(1, 4)
         if not_reco_random == 1:
             print('** Command not recognized.')

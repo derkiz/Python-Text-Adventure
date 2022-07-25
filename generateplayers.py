@@ -117,16 +117,13 @@ def ran_gen(lists):
     x = 0
     while x != 10:
         x += 1
-        # print(x)
         n = (random.randint(0, 99))
-        # print(n)
-        # print(names[n])
         if (names[n]) in gen_list:
-            # print(f'item {names[n]} already found')
             x -= 1
         else:
             gen_list.append(names[n])
 
 
 ran_gen(1)
-# print(gen_list)
+
+# To check use: print(gen_list)

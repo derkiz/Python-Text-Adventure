@@ -41,5 +41,10 @@ commandlist = [
     'inspect animals',
     'inspect paths',
     'go to person',
+    'attack target',
 
 ]
+
+
+def Combat(player):
+    pass

@@ -31,3 +31,15 @@ room_six_paths = 'a path to the north, south and west.'
 room_seven_paths = 'a path to the north and east.'
 room_eight_paths = 'a path to the west, north and east.'
 room_nine_paths = 'a path to the west and north.'
+
+# Commands
+commandlist = [
+    'target',
+    'walk away',
+    'inspect area',
+    'inspect people',
+    'inspect animals',
+    'inspect paths',
+    'go to person',
+
+]

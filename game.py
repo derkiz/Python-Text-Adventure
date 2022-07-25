@@ -1,3 +1,4 @@
+import random
 from modules import *
 from generateplayers import *
 
@@ -7,10 +8,24 @@ location = ''
 while True:
 
     # Spawn
-    area = 'one'
+    area = 1
+
+    # Target
+    target = 0
 
     # Prompt
     command = input('> ')
+
+    # Target
+    if command.lower() == 'target':
+        print(str(target))
+        if target == 0:
+            print('You have no target.')
+
+     # Walk Away
+    if command.lower() == 'walk away':
+        print('You take a stroll.')
+        target = 0
 
     # Inspect Area
     if command.lower() == 'inspect area':
@@ -22,6 +37,8 @@ while True:
     if command.lower() == 'inspect people':
         print(f'You see {str(len(gen_list))} people. ')
         print(f'admin: {gen_list}')
+
+    # Inspect Animals
 
     # Inspect Paths
     if command.lower() == 'inspect paths':
@@ -39,8 +56,9 @@ while True:
         if (int_goto - 1) in range(0, (len(gen_list))):
             print(f'You go to person {str(int_goto)}.')
             print(gen_list[int_goto - 1])
+            target = (gen_list[int_goto - 1])
 
-    # Inspect Animals
+    # Attack
 
     # Say
     if (command.lower()[:5]) == '/say ':
@@ -49,5 +67,20 @@ while True:
 
     # Quit
     if command.lower() == 'quit':
-        print('You disconnect your player. You died.')
+        print('You disconnected your player. You died.')
         break
+
+    # If command is not recognized
+    if (command.lower()[:5]) == '/say ':
+        pass
+
+    elif command.lower() not in commandlist:
+        not_reco_random = random.randint(1, 4)
+        if not_reco_random == 1:
+            print('** Command not recognized.')
+        elif not_reco_random == 2:
+            print('** That command does not exist.')
+        elif not_reco_random == 3:
+            print('** Invalid command.')
+        else:
+            print('** You should probably refer to the game instructions.')

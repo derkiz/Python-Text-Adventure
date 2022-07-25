@@ -18,6 +18,7 @@ while True:
 
     # Target
     if command.lower() == 'target':
+        print(str(target))
         if target == 0:
             print('You have no target.')
 
@@ -70,7 +71,10 @@ while True:
         break
 
     # If command is not recognized
-    if command.lower() != 'quit':
+    if (command.lower()[:5]) == '/say ':
+        pass
+
+    elif command.lower() not in commandlist:
         not_reco_random = random.randint(1, 4)
         if not_reco_random == 1:
             print('** Command not recognized.')

@@ -5,6 +5,7 @@ location = ''
 
 # Gameplay Loop
 while True:
+
     # Spawn
     area = 'one'
 

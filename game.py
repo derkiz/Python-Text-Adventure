@@ -2,8 +2,6 @@ import random
 from modules import *
 from generateplayers import *
 
-location = ''
-
 # Gameplay Loop
 while True:
 

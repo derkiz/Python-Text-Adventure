@@ -3,11 +3,7 @@ from generateplayers import *
 
 location = ''
 
-# Gameplay
-
-# command = input('> ')
-# if command.lower() != 'quit':
-
+# Gameplay Loop
 while True:
     # Spawn
     area = 'one'
@@ -44,6 +40,11 @@ while True:
             print(gen_list[int_goto - 1])
 
     # Inspect Animals
+
+    # Say
+    if (command.lower()[:5]) == '/say ':
+        said_word = (command[5:])
+        print(f'You said: {said_word}')
 
     # Quit
     if command.lower() == 'quit':

@@ -1,3 +1,6 @@
+import random
+
+
 def prompt():
     while True:
         command = input('> ')
@@ -47,4 +50,22 @@ commandlist = [
 
 
 def Combat(player):
-    pass
+
+    print(f'You have entered combat with: {player}')
+    command = input('> ')
+    if command == ('flee'):
+        print('You ran away.')
+        pass
+
+
+def NotRecognized(variety):
+    # Variety in error message
+    not_reco_random = random.randint(1, variety)
+    if not_reco_random == 1:
+        print('** Command not recognized.')
+    elif not_reco_random == 2:
+        print('** That command does not exist.')
+    elif not_reco_random == 3:
+        print('** Invalid command.')
+    else:
+        print('** You should probably refer to the game instructions.')

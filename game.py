@@ -2,14 +2,15 @@ import random
 from modules import *
 from generateplayers import *
 
+
+# Spawn
+area = 1
+
+# Target
+target = 0
+
 # Gameplay Loop
 while True:
-
-    # Spawn
-    area = 1
-
-    # Target
-    target = 1
 
     # Prompt
     command = input('> ')
@@ -36,7 +37,7 @@ while True:
         print(f'You see {str(len(gen_list))} people. ')
         print(f'admin: {gen_list}')
 
-    # Inspect Animals
+    # Inspect Animals // To do //
 
     # Inspect Paths
     if command.lower() == 'inspect paths':
@@ -52,16 +53,18 @@ while True:
         goto = input('> ')
         int_goto = int(goto)
         if (int_goto - 1) in range(0, (len(gen_list))):
+            target = int(goto)
             print(f'You go to person {str(int_goto)}.')
             print(gen_list[int_goto - 1])
-            target = (gen_list[int_goto - 1])
+        else:
+            print('Choice not recognized. Type a valid number.')
 
-    # Attack
+    # Attack // Incomplete //
     if command.lower() == 'attack target':
         if target == 0:
             print('You can not attack nothing.')
-        else:
-            print(f'target: {target}')
+        elif target in range(1, len(gen_list)):
+            Combat(gen_list[target])
 
     # Say
     if (command.lower()[:5]) == '/say ':
@@ -78,13 +81,4 @@ while True:
         pass
 
     elif command.lower() not in commandlist:
-        # Variety in error message
-        not_reco_random = random.randint(1, 4)
-        if not_reco_random == 1:
-            print('** Command not recognized.')
-        elif not_reco_random == 2:
-            print('** That command does not exist.')
-        elif not_reco_random == 3:
-            print('** Invalid command.')
-        else:
-            print('** You should probably refer to the game instructions.')
+        NotRecognized(4)

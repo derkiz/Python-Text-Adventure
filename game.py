@@ -50,13 +50,16 @@ while True:
             n += 1
             print(f'{n}: person {n}')
 
-        goto = input('> ')
-        int_goto = int(goto)
-        if (int_goto - 1) in range(0, (len(gen_list))):
-            target = int(goto)
-            print(f'You go to person {str(int_goto)}.')
-            print(gen_list[int_goto - 1])
-        else:
+        while True:
+            goto = input('> ')
+            int_goto = int(goto)
+
+            if (int_goto - 1) in range(0, (len(gen_list))):
+                target = int(goto)
+                print(f'You go to person {str(int_goto)}.')
+                print(gen_list[int_goto - 1])
+                break
+
             print('Choice not recognized. Type a valid number.')
 
     # Attack // Incomplete //

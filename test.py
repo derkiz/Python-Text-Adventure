@@ -1,14 +1,4 @@
-# Ignore This File
+x = 2
 
-import random
-from modules import *
-from generateplayers import *
-
-print(gen_list)
-
-target = 5
-
-command = input('> ')
-
-if command.lower() == 'print target':
-    print(gen_list[target-1])
+while x == 1:
+    command = input('> ')

@@ -1,4 +1,5 @@
 import random
+from generateplayers import *
 
 
 def prompt():

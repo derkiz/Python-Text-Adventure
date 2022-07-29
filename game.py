@@ -9,6 +9,8 @@ area = 1
 # Target
 target = 0
 
+print(len(gen_list))
+
 # Gameplay Loop
 while True:
 
@@ -64,9 +66,10 @@ while True:
 
     # Attack // Incomplete //
     if command.lower() == 'attack target':
+        target = target - 1
         if target == 0:
             print('You can not attack nothing.')
-        elif target in range(1, len(gen_list)):
+        elif target in range(0, len(gen_list)):
             Combat(gen_list[target])
 
     # Say

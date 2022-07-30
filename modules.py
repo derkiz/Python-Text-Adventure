@@ -2,6 +2,7 @@ import random
 from generateplayers import *
 
 
+
 def prompt():
     while True:
         command = input('> ')

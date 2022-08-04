@@ -1,4 +1,4 @@
-## A Python text adventure. 
+# A Python text adventure. 
 
 The goal for this project is to add it to a website
 and allow for online play.
@@ -9,7 +9,7 @@ This Project is not complete.
 
 To run the game head to TextAdventure/ and in your powershell run 'python game.py'
 
-## Commands:
+# Commands:
 
 - 'inspect area'
 - 'inspect paths'

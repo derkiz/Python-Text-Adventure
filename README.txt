@@ -5,6 +5,8 @@ Type your way through the world. Explore and engage with players and NPCs.
 
 This Project is not complete.
 
+To run the game head to TextAdventure/ and in your powershell run 'python game.py'
+
 Commands:
 
 - 'inspect area'

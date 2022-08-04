@@ -68,10 +68,36 @@ while True:
     # Attack // Incomplete //
     if command.lower() == 'attack target':
         target = target - 1
-        if target < -1:
+
+        if target <= -1:
             print('You can not attack nothing.')
+
         elif target in range(0, len(npc_list)):
-            Combat(npc_list[target])
+            print(f'You have entered combat with: {npc_list[target]}')
+
+            while npc_list[target][1] > 0:
+                command = input('> ')
+                
+                if command == 'flee':
+                    print('You ran away.')
+                    break
+
+                if command == 'quit':
+                    print('You can not quit in combat.')
+
+                if command == 'punch':
+                    print(f'You punched {npc_list[target]}.')
+                    damage = random.randint(20, 30)
+                    print(f'You dealt {str(damage)} damage.')
+                    npc_list[target][1] - damage
+                    print(f'{npc_list[target][0]} HP Remaining: {str(npc_list[target][1])}')
+
+                if command.lower() not in fightCommandList:
+                    NotRecognized(4)
+            
+            if npc_list[target][1] < 0:
+                print(f'You killed {npc_list[target]}.')
+            
 
     # Say
     if (command.lower()[:5]) == '/say ':

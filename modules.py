@@ -2,7 +2,6 @@ import random
 from generateplayers import *
 
 
-
 def prompt():
     while True:
         command = input('> ')
@@ -47,20 +46,15 @@ commandlist = [
     'inspect paths',
     'go to person',
     'attack target',
+    'flee',
 
 ]
 
+fightCommandList = [
+   'punch',
+   'quit',
+]
 
-def Combat(player):
-
-    print(f'You have entered combat with: {player}')
-    command = input('> ')
-    if command == 'flee':
-        print('You ran away.')
-        pass
-    if command == 'punch':
-        print(f'You punched {player}.')
-        print(f'{player} stares at you angrily clenching their fist.')
 
 
 def NotRecognized(variety):

@@ -36,7 +36,7 @@ room_seven_paths = 'a path to the north and east.'
 room_eight_paths = 'a path to the west, north and east.'
 room_nine_paths = 'a path to the west and north.'
 
-# Commands
+# Commands / Misc Lists
 commandlist = [
     'target',
     'walk away',
@@ -46,15 +46,26 @@ commandlist = [
     'inspect paths',
     'go to person',
     'attack target',
+    '> ',
     'flee',
 
 ]
 
 fightCommandList = [
-   'punch',
-   'quit',
+    'punch',
+    'quit',
+    '> ',
+    'flee',
 ]
 
+stringNumbers = []
+stringRange = 0
+
+while stringRange != 100:
+    stringRange += 1
+    stringNumbers.append(str(stringRange))
+
+print(stringNumbers)
 
 
 def NotRecognized(variety):

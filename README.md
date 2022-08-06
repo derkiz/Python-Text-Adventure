@@ -10,13 +10,13 @@ To run the game head to TextAdventure/ and in your powershell run 'python game.p
 
 - inspect area
    - shows you all aspects of the area (People, corpses, animals, objects, objects etc...)
-   -
+   
 - inspect paths
    - shows you all the paths of your area
-   -
+   
 - inspect people
    - shows how many people are in your area
-   -
+   
 - go to person
    - lists the people you can go to
    - then targets your choice

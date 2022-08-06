@@ -11,12 +11,16 @@ To run the game head to TextAdventure/ and in your powershell run 'python game.p
 
 # Commands:
 
-- 'inspect area'
-- 'inspect paths'
-- 'inspect people'
-- 'go to person'
-- 'attack target'
-   - 'punch'
-- '/say (your message)'
+- inspect area
+- inspect paths
+- inspect people
+- go to person
+- go to corpse
+- target
+- walk away
+- attack target
+   - punch
+   - flee
+- /say (your message)
 
 

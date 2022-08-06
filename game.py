@@ -110,6 +110,7 @@ while True:
 
             if goto.lower() == 'return':
                 print('You cease your action.')
+                break
 
             if goto in stringNumbers:
 

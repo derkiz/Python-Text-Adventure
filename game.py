@@ -47,7 +47,7 @@ while True:
         if len(npc_corpse) == 1:
             print('You see one dead person.')
         elif len(npc_corpse) >= 2:
-            print(f'You see {len(npc_corpse)} people.')
+            print(f'You see {len(npc_corpse)} dead people.')
 
         print(f'You see {room_one_paths}')
 
@@ -166,6 +166,7 @@ while True:
                         npc_list.remove(f'{npc_list[target]}')
                         command = '> '
                         target = 0
+                        break
 
                 if command.lower() not in fightCommandList:
                     NotRecognized(4)

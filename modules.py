@@ -48,6 +48,7 @@ commandlist = [
     'attack target',
     '> ',
     'flee',
+    'return',
 
 ]
 

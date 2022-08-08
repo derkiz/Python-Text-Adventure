@@ -31,5 +31,3 @@ def gen_hp():
 
 gen_npc()
 gen_hp()
-
-# gen_hp()

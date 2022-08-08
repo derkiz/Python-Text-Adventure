@@ -59,6 +59,8 @@ fightCommandList = [
     'flee',
 ]
 
+# String Numbers
+
 stringNumbers = []
 stringRange = 0
 

@@ -66,8 +66,6 @@ while stringRange != 100:
     stringRange += 1
     stringNumbers.append(str(stringRange))
 
-print(stringNumbers)
-
 
 def NotRecognized(variety):
     # Variety in error message

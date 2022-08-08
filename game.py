@@ -2,13 +2,18 @@ import random
 from modules import *
 from generateplayers import *
 
+# Debugging
+
+# print(target)
+# print(npc_list)
+# print(npc_health)
+
 # Spawn
 area = 1
 
 # Target
 target = 0
-
-print(len(npc_list))
+corpseTarget = 0
 
 # Gameplay Loop
 while True:
@@ -56,13 +61,18 @@ while True:
 
         if len(npc_list) >= 2:
             print(f'You see {str(len(npc_list))} people.')
+
         elif len(npc_list) == 1:
             print('You see one person.')
 
+    # Inspect Corspes
+    if command.lower() == 'inspect corpses':
+
         if len(npc_corpse) == 1:
-            print('You see one dead person.')
+            print('You see one corpse.')
+
         elif len(npc_corpse) >= 2:
-            print(f'You see {len(npc_corpse)} people.')
+            print(f'You see {len(npc_corpse)} corpses.')
 
         print(f'admin: {npc_list}')
 
@@ -74,66 +84,88 @@ while True:
 
     # Go to corpse
     if command.lower() == 'go to corpse':
-        corpseCount = 0
 
-        if len(npc_corpse) > 0:
-            while corpseCount != len(npc_corpse):
-                corpseCount += 1
-                print(f'{corpseCount}: Corpse {corpseCount}')
+        if len(npc_corpse) != 0:
+
+            corpseCount = 0
+
+            if len(npc_corpse) > 0:
+                while corpseCount != len(npc_corpse):
+                    corpseCount += 1
+                    print(f'{corpseCount}: Corpse {corpseCount}')
+
+                while True:
+                    goto = input('> ')
+
+                    if goto.lower() == 'return':
+                        print('You cease your action.')
+
+                    if goto in stringNumbers:
+
+                        int_goto = int(goto)
+
+                        if (int_goto - 1) in range(0, (len(npc_corpse))):
+                            print(f'You go to corpse {str(int_goto)}.')
+                            print(npc_corpse[int_goto - 1])
+                            command = '> '
+                            corpseTarget = int(goto)
+                            target = 0
+                            break
+
+                    print('Choice not recognized. Enter a valid number.')
+
+        else:
+            print('There are no corpses to go to.')
+
+    # Go to person
+    if command.lower() == 'go to person':
+
+        if len(npc_list) != 0:
+
+            n = 0
+
+            while n != len(npc_list):
+                n += 1
+                print(f'{n}: Person {n}')
 
             while True:
                 goto = input('> ')
 
                 if goto.lower() == 'return':
                     print('You cease your action.')
+                    break
 
                 if goto in stringNumbers:
 
                     int_goto = int(goto)
 
-                    if (int_goto - 1) in range(0, (len(npc_corpse))):
-                        print(f'You go to corpse {str(int_goto)}.')
-                        print(npc_corpse[int_goto - 1])
+                    if (int_goto - 1) in range(0, (len(npc_list))):
+                        print(f'You go to person {str(int_goto)}.')
+                        print(npc_list[int_goto - 1])
                         command = '> '
+                        target = int(goto)
+                        corpseTarget = 0
                         break
 
-    # Go to person
-    if command.lower() == 'go to person':
-        n = 0
+                print('Choice not recognized. Enter a valid number.')
 
-        while n != len(npc_list):
-            n += 1
-            print(f'{n}: Person {n}')
-
-        while True:
-            goto = input('> ')
-
-            if goto.lower() == 'return':
-                print('You cease your action.')
-                break
-
-            if goto in stringNumbers:
-
-                int_goto = int(goto)
-                target = int(goto)
-
-                if (int_goto - 1) in range(0, (len(npc_list))):
-                    print(f'You go to person {str(int_goto)}.')
-                    print(npc_list[int_goto - 1])
-                    command = '> '
-                    break
-
-            print('Choice not recognized. Enter a valid number.')
+        else:
+            print('There is no one to go to.')
 
     # Attack // Incomplete //
     if command.lower() == 'attack target':
+
         target = target - 1
 
-        if npc_health[target] < 0:
-            print('You can not attack dead players.')
+        # print(target)
+        # print(npc_list)
+        # print(npc_health)
 
-        elif target <= -1:
+        if target <= -1:
             print('You can not attack nothing.')
+
+        elif npc_health[target] <= 0:
+            print('You can not attack dead players.')
 
         elif target in range(0, len(npc_list)):
             print(f'You have entered combat with: {npc_list[target]}')
@@ -152,7 +184,7 @@ while True:
 
                 if command.lower() == 'punch':
                     print(f'You punched {npc_list[target]}.')
-                    damage = random.randint(20, 30)
+                    damage = random.randint(50, 100)
                     print(f'You dealt {str(damage)} damage.')
                     npc_health[target] -= damage
 
@@ -163,8 +195,9 @@ while True:
 
                     if npc_health[target] <= 0:
                         print(f'You killed {npc_list[target]}.')
-                        npc_corpse.append(f'{npc_list[target]}')
-                        npc_list.remove(f'{npc_list[target]}')
+                        npc_corpse.append(npc_list[target])
+                        npc_list.remove(npc_list[target])
+                        npc_health.remove(npc_health[target])
                         command = '> '
                         target = 0
                         break

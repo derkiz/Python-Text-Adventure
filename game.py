@@ -1,4 +1,5 @@
 import random
+import time
 from modules import *
 from generateplayers import *
 
@@ -14,6 +15,9 @@ area = 1
 # Target
 target = 0
 corpseTarget = 0
+
+# Player HP
+playerHP = 100
 
 # Gameplay Loop
 while True:
@@ -38,6 +42,35 @@ while True:
             print('You take a stroll.')
 
         target = 0
+
+    # Rest
+    if command.lower() == 'rest':
+        print('You sit down and rest.')
+
+        while playerHP != 100:
+
+            playerHP += 25
+
+            if playerHP == 100:
+                time.sleep(2)
+                print('You recover 25 HP. Current HP: 100.')
+
+            if playerHP < 100:
+                time.sleep(2)
+                print(
+                    f'You recover 25 HP. Current HP: {str(playerHP)}.'
+                )
+
+            if playerHP > 100:
+                time.sleep(2)
+                recovered = 100 - (playerHP - 25)
+                print(
+                    f'You recover {str(recovered)} HP. Current HP: 100.'
+                )
+                playerHP = 100
+
+        time.sleep(1)
+        print('You have replenished all of your HP. You get up.')
 
     # Inspect Area
     if command.lower() == 'inspect area':
@@ -184,7 +217,7 @@ while True:
 
                 if command.lower() == 'punch':
                     print(f'You punched {npc_list[target]}.')
-                    damage = random.randint(50, 100)
+                    damage = random.randint(25, 45)
                     print(f'You dealt {str(damage)} damage.')
                     npc_health[target] -= damage
 
@@ -192,6 +225,20 @@ while True:
                         print(
                             f'{npc_list[target]} has {str(npc_health[target])} HP remaining.'
                         )
+
+                        # NPC Turn in Combat
+                        time.sleep(1)
+                        damage = random.randint(15, 40)
+                        playerHP -= damage
+                        print(
+                            f'{npc_list[target]} punches you and deals {str(damage)} damage.')
+
+                        if playerHP <= 0:
+                            print('You died.')
+                            command = 'wiheqw87wqzx54qw6e'
+                            break
+
+                        print(f'You have {str(playerHP)} remaing.')
 
                     if npc_health[target] <= 0:
                         print(f'You killed {npc_list[target]}.')
@@ -218,6 +265,10 @@ while True:
     # Flee Attempt
     if command.lower() == 'flee':
         print('You can only flee in combat.')
+
+    # Died in Combat
+    if command.lower() == 'wiheqw87wqzx54qw6e':
+        break
 
     # If command is not recognized
     if (command.lower()[:5]) == '/say ':

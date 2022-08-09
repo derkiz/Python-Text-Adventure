@@ -49,6 +49,8 @@ commandlist = [
     '> ',
     'flee',
     'return',
+    'rest',
+    'get up',
 
 ]
 

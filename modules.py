@@ -2,6 +2,11 @@ import random
 from generateplayers import *
 
 
+# The Map
+# 1 2 3
+# 4 5 6
+# 7 8 9
+
 def prompt():
     while True:
         command = input('> ')
@@ -24,17 +29,22 @@ class Homosapien:
         return '{} {}'.format(self.first, self.last)
 
 
-game_map = [1, 2, 3], [4, 5, 6], [7, 8, 9]
+# Path Default String
+path = 'You take the path to the '
 
-room_one_paths = 'a path to the south and east.'
-room_two_paths = 'a path to the west, south, and east.'
-room_three_paths = 'a path to the west and south.'
-room_four_paths = 'a path to the north, east and south.'
-room_five_paths = 'a path to the north, east, south and west.'
-room_six_paths = 'a path to the north, south and west.'
-room_seven_paths = 'a path to the north and east.'
-room_eight_paths = 'a path to the west, north and east.'
-room_nine_paths = 'a path to the west and north.'
+# Paths
+roompaths = [
+    'a path to the south and east.',
+    'a path to the west, south, and east.',
+    'a path to the west and south.',
+    'a path to the north, east and south.',
+    'a path to the north, east, south and west.',
+    'a path to the north, south and west.',
+    'a path to the north and east.',
+    'a path to the west, north and east.',
+    'a path to the west and north.',
+
+]
 
 # Commands / Misc Lists
 commandlist = [
@@ -42,15 +52,16 @@ commandlist = [
     'walk away',
     'inspect area',
     'inspect people',
+    'inspect corpses',
     'inspect animals',
     'inspect paths',
     'go to person',
     'attack target',
     '> ',
     'flee',
-    'return',
     'rest',
     'get up',
+    'go',
 
 ]
 
@@ -82,3 +93,11 @@ def NotRecognized(variety):
         print('** Invalid command.')
     else:
         print('** You should probably refer to the game instructions.')
+
+
+def choiceNotReco(variety):
+    not_reco_random = random.randint(1, variety)
+    if not_reco_random == 1:
+        print('** Enter a valid choice, or enter return.')
+    elif not_reco_random == 2:
+        print('** Choice not recognized.')

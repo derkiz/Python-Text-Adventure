@@ -32,7 +32,12 @@ while True:
         if target == 0:
             print('You have no target.')
 
-     # Walk Away
+    # Area
+    if command.lower() == 'area':
+        print(area)
+        command = '> '
+
+    # Walk Away
     if command.lower() == 'walk away':
 
         if target == 0:
@@ -77,53 +82,273 @@ while True:
 
         print('You inspect the area.')
 
-        if len(npc_list) >= 2:
-            print(f'You see {str(len(npc_list))} people.')
-        elif len(npc_list) == 1:
+        if len(npc_list[area - 1]) >= 2:
+            print(f'You see {str(len(npc_list[area - 1]))} people.')
+        elif len(npc_list[area - 1]) == 1:
             print('You see one person.')
 
-        if len(npc_corpse) == 1:
+        if len(npc_corpse[area - 1]) == 1:
             print('You see one dead person.')
-        elif len(npc_corpse) >= 2:
-            print(f'You see {len(npc_corpse)} dead people.')
+        elif len(npc_corpse[area - 1]) >= 2:
+            print(f'You see {len(npc_corpse[area - 1])} dead people.')
 
-        print(f'You see {room_one_paths}')
+        print(f'You see {roompaths[area - 1]}')
 
     # Inspect People
     if command.lower() == 'inspect people':
 
-        if len(npc_list) >= 2:
-            print(f'You see {str(len(npc_list))} people.')
+        if len(npc_list[area - 1]) >= 2:
+            print(f'You see {str(len(npc_list[area - 1]))} people.')
 
-        elif len(npc_list) == 1:
+        elif len(npc_list[area - 1]) == 1:
             print('You see one person.')
+
+        elif len(npc_list[area - 1]) <= 0:
+            print('You see nobody.')
 
     # Inspect Corspes
     if command.lower() == 'inspect corpses':
 
-        if len(npc_corpse) == 1:
+        if len(npc_corpse[area - 1]) == 1:
             print('You see one corpse.')
 
-        elif len(npc_corpse) >= 2:
-            print(f'You see {len(npc_corpse)} corpses.')
-
-        print(f'admin: {npc_list}')
+        elif len(npc_corpse[area - 1]) >= 2:
+            print(f'You see {len(npc_corpse[area - 1])} corpses.')
 
     # Inspect Animals // To do //
 
     # Inspect Paths
     if command.lower() == 'inspect paths':
-        print(f'You see {room_one_paths}')
+        print(f'You see {roompaths[area - 1]}')
+
+    # Go to PATHS
+    if command.lower().strip() == 'go':
+
+        while True:
+
+            # Area 1
+            if area == 1:
+                direction = input('South or East?: ')
+
+                if direction.lower() == 'return':
+                    print('You cease your action.')
+                    break
+
+                elif direction.lower() == 'south':
+                    area = 4
+                    print(path + direction)
+                    break
+
+                elif direction.lower() == 'east':
+                    area = 2
+                    print(path + direction)
+                    break
+
+                elif direction == 'return':
+                    print('You cease your action.')
+                    break
+
+                choiceNotReco(2)
+
+            # Area 2
+            if area == 2:
+                direction = input('West,  South or East?: ')
+
+                if direction.lower() == 'return':
+                    print('You cease your action.')
+                    break
+
+                elif direction.lower() == 'south':
+                    area = 5
+                    print(path + direction)
+                    break
+
+                elif direction.lower() == 'east':
+                    area = 3
+                    print(path + direction)
+                    break
+
+                elif direction.lower() == 'west':
+                    area = 1
+                    print(path + direction)
+                    break
+
+                choiceNotReco(2)
+
+            # Area 3
+            if area == 3:
+                direction = input('West or South?: ')
+
+                if direction.lower() == 'return':
+                    print('You cease your action.')
+                    break
+
+                elif direction.lower() == 'west':
+                    area = 2
+                    print(path + direction)
+                    break
+
+                elif direction.lower() == 'south':
+                    area = 6
+                    print(path + direction)
+                    break
+
+                choiceNotReco(2)
+
+            # Area 4
+            if area == 4:
+                direction = input('North, East or South?: ')
+
+                if direction.lower() == 'return':
+                    print('You cease your action.')
+                    break
+
+                elif direction.lower() == 'south':
+                    area = 7
+                    print(path + direction)
+                    break
+
+                elif direction.lower() == 'east':
+                    area = 5
+                    print(path + direction)
+                    break
+
+                elif direction.lower() == 'north':
+                    area = 1
+                    print(path + direction)
+                    break
+
+                choiceNotReco(2)
+
+            # Area 5
+            if area == 5:
+                direction = input('North, South, East or West?: ')
+
+                if direction.lower() == 'return':
+                    print('You cease your action.')
+                    break
+
+                elif direction.lower() == 'south':
+                    area = 8
+                    print(path + direction)
+                    break
+
+                elif direction.lower() == 'east':
+                    area = 6
+                    print(path + direction)
+                    break
+
+                elif direction.lower() == 'north':
+                    area = 2
+                    print(path + direction)
+                    break
+
+                elif direction.lower() == 'west':
+                    area = 4
+                    print(path + direction)
+                    break
+
+                choiceNotReco(2)
+
+            # Area 6
+            if area == 6:
+                direction = input('North, West or South?: ')
+
+                if direction.lower() == 'return':
+                    print('You cease your action.')
+                    break
+
+                elif direction.lower() == 'south':
+                    area = 9
+                    print(path + direction)
+                    break
+
+                elif direction.lower() == 'west':
+                    area = 5
+                    print(path + direction)
+                    break
+
+                elif direction.lower() == 'north':
+                    area = 3
+                    print(path + direction)
+                    break
+
+                choiceNotReco(2)
+
+            # Area 7
+            if area == 7:
+                direction = input('North or East?: ')
+
+                if direction.lower() == 'return':
+                    print('You cease your action.')
+                    break
+
+                elif direction.lower() == 'east':
+                    area = 8
+                    print(path + direction)
+                    break
+
+                elif direction.lower() == 'north':
+                    area = 4
+                    print(path + direction)
+                    break
+
+                choiceNotReco(2)
+
+            # Area 8
+            if area == 8:
+                direction = input('North, East or West: ')
+
+                if direction.lower() == 'return':
+                    print('You cease your action.')
+                    break
+
+                elif direction.lower() == 'west':
+                    area = 7
+                    print(path + direction)
+                    break
+
+                elif direction.lower() == 'east':
+                    area = 9
+                    print(path + direction)
+                    break
+
+                elif direction.lower() == 'north':
+                    area = 5
+                    print(path + direction)
+                    break
+
+                choiceNotReco(2)
+
+            # Area 9
+            if area == 9:
+                direction = input('West or North: ')
+
+                if direction.lower() == 'return':
+                    print('You cease your action.')
+                    break
+
+                elif direction.lower() == 'west':
+                    area = 8
+                    print(path + direction)
+                    break
+
+                elif direction.lower() == 'north':
+                    area = 6
+                    print(path + direction)
+                    break
+
+                choiceNotReco(2)
 
     # Go to corpse
     if command.lower() == 'go to corpse':
 
-        if len(npc_corpse) != 0:
+        if len(npc_corpse[area - 1]) != 0:
 
             corpseCount = 0
 
-            if len(npc_corpse) > 0:
-                while corpseCount != len(npc_corpse):
+            if len(npc_corpse[area - 1]) > 0:
+                while corpseCount != len(npc_corpse[area - 1]):
                     corpseCount += 1
                     print(f'{corpseCount}: Corpse {corpseCount}')
 
@@ -132,14 +357,15 @@ while True:
 
                     if goto.lower() == 'return':
                         print('You cease your action.')
+                        break
 
                     if goto in stringNumbers:
 
                         int_goto = int(goto)
 
-                        if (int_goto - 1) in range(0, (len(npc_corpse))):
+                        if (int_goto - 1) in range(0, (len(npc_corpse[area - 1]))):
                             print(f'You go to corpse {str(int_goto)}.')
-                            print(npc_corpse[int_goto - 1])
+                            print(npc_corpse[area - 1][int_goto - 1])
                             command = '> '
                             corpseTarget = int(goto)
                             target = 0
@@ -153,11 +379,11 @@ while True:
     # Go to person
     if command.lower() == 'go to person':
 
-        if len(npc_list) != 0:
+        if len(npc_list[area - 1]) != 0:
 
             n = 0
 
-            while n != len(npc_list):
+            while n != len(npc_list[area - 1]):
                 n += 1
                 print(f'{n}: Person {n}')
 
@@ -172,9 +398,9 @@ while True:
 
                     int_goto = int(goto)
 
-                    if (int_goto - 1) in range(0, (len(npc_list))):
+                    if (int_goto - 1) in range(0, (len(npc_list[area - 1]))):
                         print(f'You go to person {str(int_goto)}.')
-                        print(npc_list[int_goto - 1])
+                        print(npc_list[area - 1][int_goto - 1])
                         command = '> '
                         target = int(goto)
                         corpseTarget = 0
@@ -197,13 +423,14 @@ while True:
         if target <= -1:
             print('You can not attack nothing.')
 
-        elif npc_health[target] <= 0:
+        elif npc_health[area - 1][target] <= 0:
             print('You can not attack dead players.')
 
-        elif target in range(0, len(npc_list)):
-            print(f'You have entered combat with: {npc_list[target]}')
+        elif target in range(0, len(npc_list[area - 1])):
+            print(
+                f'You have entered combat with: {npc_list[area - 1][target]}')
 
-            while npc_health[target] > 0:
+            while npc_health[area - 1][target] > 0:
                 command = input('> ')
 
                 if command.lower() == 'flee':
@@ -216,14 +443,14 @@ while True:
                     print('You can not quit in combat.')
 
                 if command.lower() == 'punch':
-                    print(f'You punched {npc_list[target]}.')
+                    print(f'You punched {npc_list[area - 1][target]}.')
                     damage = random.randint(25, 45)
                     print(f'You dealt {str(damage)} damage.')
-                    npc_health[target] -= damage
+                    npc_health[area - 1][target] -= damage
 
-                    if npc_health[target] > 0:
+                    if npc_health[area - 1][target] > 0:
                         print(
-                            f'{npc_list[target]} has {str(npc_health[target])} HP remaining.'
+                            f'{npc_list[area - 1][target]} has {str(npc_health[area - 1][target])} HP remaining.'
                         )
 
                         # NPC Turn in Combat
@@ -231,7 +458,7 @@ while True:
                         damage = random.randint(15, 40)
                         playerHP -= damage
                         print(
-                            f'{npc_list[target]} punches you and deals {str(damage)} damage.')
+                            f'{npc_list[area - 1][target]} punches you and deals {str(damage)} damage.')
 
                         if playerHP <= 0:
                             print('You died.')
@@ -240,11 +467,11 @@ while True:
 
                         print(f'You have {str(playerHP)} remaing.')
 
-                    if npc_health[target] <= 0:
-                        print(f'You killed {npc_list[target]}.')
-                        npc_corpse.append(npc_list[target])
-                        npc_list.remove(npc_list[target])
-                        npc_health.remove(npc_health[target])
+                    if npc_health[area - 1][target] <= 0:
+                        print(f'You killed {npc_list[area - 1][target]}.')
+                        npc_corpse[area-1].append(npc_list[area - 1][target])
+                        npc_list[area-1].remove(npc_list[area - 1][target])
+                        npc_health[area-1].remove(npc_health[area - 1][target])
                         command = '> '
                         target = 0
                         break
